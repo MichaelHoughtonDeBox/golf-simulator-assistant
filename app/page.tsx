@@ -34,9 +34,9 @@ export default function Home() {
     const distanceNum = parseFloat(distance);
     const percentageNum = parseFloat(percent);
     if (distanceNum > 0 && percentageNum > 0) {
-      let distanceInYards = inUnit === "meters" ? metersToYards(distanceNum) : distanceNum;
-      let adjustedDistanceYards = distanceInYards / (percentageNum / 100);
-      let finalDistance = outUnit === "meters" ? yardsToMeters(adjustedDistanceYards) : adjustedDistanceYards;
+      const distanceInYards = inUnit === "meters" ? metersToYards(distanceNum) : distanceNum;
+      const adjustedDistanceYards = distanceInYards / (percentageNum / 100);
+      const finalDistance = outUnit === "meters" ? yardsToMeters(adjustedDistanceYards) : adjustedDistanceYards;
       return finalDistance;
     }
     return null;
@@ -47,7 +47,7 @@ export default function Home() {
   useEffect(() => {
     const result = calculateDistance(yardage, percentage, inputUnit, outputUnit);
     setAdjustedDistance(result);
-  }, [yardage, percentage, inputUnit, outputUnit]);
+  }, [yardage, percentage, inputUnit, outputUnit, calculateDistance]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
